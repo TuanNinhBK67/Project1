@@ -9,9 +9,19 @@ string decoding(string& input){
     int n = input.length();
     for(int i = 0; i < n; i++){
         string temp = "";
-        while(isdigit(input[i])){
+
+        if (input[i] == '\n') {
+            decode += '\n';
+            continue;
+        }
+
+        while(i < n && isdigit(input[i])){
             temp += input[i];
             i++;
+        }
+
+         if (temp.empty() || input[i] == '\n') {
+            continue;
         }
 
         int count = stoi(temp);
@@ -30,6 +40,12 @@ string decoding2(string& input){
     int n = input.length();
 
     for(int i = 0; i < n; i++){
+
+        if (input[i] == '\n') {
+            decode += '\n';
+            continue;
+        }
+
         char character = input[i];
         i++;
         string temp = "";
@@ -39,6 +55,10 @@ string decoding2(string& input){
             i++;
         }
 
+        if (temp.empty() || input[i] == '\n') {
+            continue;
+        }
+        
         int count = stoi(temp);
         for(int j = 0; j < count; j++){
             decode += character;
@@ -65,7 +85,7 @@ int main(){
     string data, line;
     if(inputFile){
         while(getline(inputFile, line)){
-            data += line;
+            data += line + "\n";
         }
         inputFile.close();
     }
