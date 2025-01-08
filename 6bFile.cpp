@@ -15,6 +15,11 @@ string decoding(string& input){
             continue;
         }
 
+        if (input[i] == ' ') {
+            decode += ' ';
+            continue;
+        }
+
         while(i < n && isdigit(input[i])){
             temp += input[i];
             i++;
@@ -43,6 +48,11 @@ string decoding2(string& input){
 
         if (input[i] == '\n') {
             decode += '\n';
+            continue;
+        }
+
+        if (input[i] == ' ') {
+            decode += ' ';
             continue;
         }
 
