@@ -8,9 +8,19 @@ string decoding(string& input){
     int n = input.length();
     for(int i = 0; i < n; i++){
         string temp = "";
-        while(isdigit(input[i])){
+
+        if (input[i] == ' ') {
+            decode += ' ';
+            continue;
+        }
+
+        while(i < n && isdigit(input[i])){
             temp += input[i];
             i++;
+        }
+
+        if (i >= n || !isalpha(input[i]) || (i + 1 < n && isalpha(input[i + 1]))) {
+            return "Dau vao bi loi";
         }
 
         int count = stoi(temp);
@@ -33,9 +43,18 @@ string decoding2(string& input){
         i++;
         string temp = "";
 
+        if (character == ' ') {
+            decode += ' ';
+            continue;
+        }
+
         while(i < n && isdigit(input[i])){
             temp += input[i];
             i++;
+        }
+
+        if(temp.empty() || i > n){
+            return "Dau vao bi loi";
         }
 
         int count = stoi(temp);
@@ -50,7 +69,7 @@ string decoding2(string& input){
 int main(){
     cout << "Nhap chuoi can giai ma: ";
     string input;
-    cin >> input;
+    getline(cin, input);
     cout << "Sau khi giai ma: ";
     if(isdigit(input[0])) cout << decoding(input);
     else cout << decoding2(input);

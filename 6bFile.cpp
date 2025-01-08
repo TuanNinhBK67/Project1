@@ -24,6 +24,10 @@ string decoding(string& input){
             temp += input[i];
             i++;
         }
+        
+        if (i >= n || !isalpha(input[i]) || (i + 1 < n && isalpha(input[i + 1]))) {
+            return "Dau vao bi loi";
+        }
 
          if (temp.empty() || input[i] == '\n') {
             continue;
@@ -63,6 +67,10 @@ string decoding2(string& input){
         while(i < n && isdigit(input[i])){
             temp += input[i];
             i++;
+        }
+
+        if(temp.empty() || i > n){
+            return "Dau vao bi loi";
         }
 
         if (temp.empty() || input[i] == '\n') {
