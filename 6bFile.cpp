@@ -25,7 +25,8 @@ string decoding(string& input){
             i++;
         }
         
-        if (i >= n || !isalpha(input[i]) || (i + 1 < n && isalpha(input[i + 1]))) {
+        if (i >= n || !isalpha(input[i]) || 
+        (i + 1 < n && isalpha(input[i + 1]))) {
             return "Dau vao bi loi";
         }
 
